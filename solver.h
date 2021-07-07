@@ -1,6 +1,9 @@
 #ifndef SOLVER.h
 #define SOLVER.h
 
+#define MAX 9
+#define EMPTY 0
+
 #include <iostream>
 
 using namespace std;
@@ -9,9 +12,10 @@ class solver {
     public:
         solver();
     private:
-        void solve(int grid[9][9]);
-        bool isSolved(int grid[9][9]);
-        void printGrid(int grid[9][9]);
+        void solve(int grid[MAX][MAX]);
+        bool isSolved(int grid[MAX][MAX]);
+        void printGrid(int grid[MAX][MAX]);
+        bool isEmpty(int grid[MAX][MAX], int &, int &);
 };
 
 #endif

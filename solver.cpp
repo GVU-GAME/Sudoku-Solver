@@ -1,6 +1,4 @@
 #include "solver.h"
-#define MAX 9
-#define EMPTY 0
 
 //gets the sudoku board to solve
 solver::solver() {
@@ -16,9 +14,24 @@ solver::solver() {
     solve(grid);
 }
 
+bool solver::isEmpty(int grid[MAX][MAX], int &row, int &col) {
+    for(row = 0; row < MAX; row++) {
+        for(col = 0; col < MAX; col++) {
+            if(grid[row][col] == EMPTY) {
+                return true;
+            }
+        }
+    }
+
+    return false;
+}
+
 //returns if the board is solved or not
 bool solver::isSolved(int grid[MAX][MAX]) {
-
+    int row, col;
+    if(!isEmpty(grid, row, col)){
+        return true;
+    }
 }
 
 //prints the game board
