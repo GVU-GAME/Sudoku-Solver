@@ -1,5 +1,5 @@
-#ifndef SOLVER.h
-#define SOLVER.h
+#ifndef SOLVER
+#define SOLVER
 
 #define MAX 9
 #define EMPTY 0
