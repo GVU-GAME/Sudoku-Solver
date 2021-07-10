@@ -16,6 +16,7 @@ class solver {
         bool isSolved(int grid[MAX][MAX]);
         void printGrid(int grid[MAX][MAX]);
         bool isEmpty(int grid[MAX][MAX], int &, int &);
+        bool isValidSpot(int grid[MAX][MAX], int, int, int);
 };
 
 #endif
