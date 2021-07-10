@@ -49,12 +49,21 @@ bool solver::checkVert(int grid[MAX][MAX], int col, int num) {
 
 //checks if there are any instances of num in the square
 bool solver::checkBox(int grid[MAX][MAX], int row, int col, int num) {
-    
+    //checks from top to bottom of box for an instance of num
+    for(int cRow = 0; cRow < 3; cRow++) {
+        for(int cCol = 0; cCol < 3; cCol++) {
+            if(grid[cRow + row][cCol + col] == num) {
+                return false;
+            }
+        }
+    }
+
+    return true;
 }
 
 //checks if num can be places a place on the grid
 bool solver::isValidSpot(int grid[MAX][MAX], int row, int col, int num) {
-    return checkHori(grid, row, num) && checkVert(grid, col, num) && checkBox(grid, row, col, num);
+    return checkHori(grid, row, num) && checkVert(grid, col, num) && checkBox(grid, row - (row % 3), col - (col % 3), num);
 }
 
 //returns if the board is solved or not
