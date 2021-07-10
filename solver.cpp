@@ -27,6 +27,10 @@ bool solver::isEmpty(int grid[MAX][MAX], int &row, int &col) {
     return false;
 }
 
+bool solver::isValidSpot(int grid[MAX][MAX], int row, int col, int num) {
+
+}
+
 //returns if the board is solved or not
 bool solver::isSolved(int grid[MAX][MAX]) {
     int row, col;
@@ -38,8 +42,19 @@ bool solver::isSolved(int grid[MAX][MAX]) {
 
     //gets numbers 1 to 9 to place on the board
     for(int num = 1; num <= MAX; num++) {
-        //code
+        //checks if there are no instances of num in the section
+        if(isValidSpot(grid, row, col, num)) {
+            //sets grid space to num if valid
+            grid[row][col] = num;
+            //recurse to fill out the remainder of grid
+            if(isSolved(grid)) {
+                return true;
+            }
+            grid[row][col] = EMPTY;
+        }
     }
+
+    return false;
 }
 
 //prints the game board
