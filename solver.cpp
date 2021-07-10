@@ -27,8 +27,34 @@ bool solver::isEmpty(int grid[MAX][MAX], int &row, int &col) {
     return false;
 }
 
-bool solver::isValidSpot(int grid[MAX][MAX], int row, int col, int num) {
+//checks if there are any instances of num in the row
+bool solver::checkHori(int grid[MAX][MAX], int row, int num) {
+    for(int check = 0; check < MAX; check++) {
+        if(grid[row][check] == num) {
+            return false;
+        }
+    }
+    return true;
+}
 
+//checks if there are any instances of num in the col
+bool solver::checkVert(int grid[MAX][MAX], int col, int num) {
+    for(int check = 0; check < MAX; check++) {
+        if(grid[check][col] == num) {
+            return false;
+        }
+    }
+    return true;
+}
+
+//checks if there are any instances of num in the square
+bool solver::checkBox(int grid[MAX][MAX], int row, int col, int num) {
+    
+}
+
+//checks if num can be places a place on the grid
+bool solver::isValidSpot(int grid[MAX][MAX], int row, int col, int num) {
+    return checkHori(grid, row, num) && checkVert(grid, col, num) && checkBox(grid, row, col, num);
 }
 
 //returns if the board is solved or not

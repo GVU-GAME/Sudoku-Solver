@@ -17,6 +17,9 @@ class solver {
         void printGrid(int grid[MAX][MAX]);
         bool isEmpty(int grid[MAX][MAX], int &, int &);
         bool isValidSpot(int grid[MAX][MAX], int, int, int);
+        bool checkHori(int grid[MAX][MAX], int, int);
+        bool checkVert(int grid[MAX][MAX], int, int);
+        bool checkBox(int grid[MAX][MAX], int, int, int);
 };
 
 #endif
