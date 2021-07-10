@@ -96,7 +96,7 @@ bool solver::isSolved(int grid[MAX][MAX]) {
 void solver::printGrid(int grid[MAX][MAX]) {
     for(int row = 0; row < MAX; row++) {
         for(int col = 0; col < MAX; col++) {
-            cout << grid[row][col] << " ";
+            cout << grid[row][col] << " | ";
         }
         cout << endl;
     }
