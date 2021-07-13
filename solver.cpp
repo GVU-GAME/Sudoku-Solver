@@ -2,7 +2,6 @@
 
 //gets the sudoku board to solve
 void rules();
-void getPuzzel();
 
 solver::solver() {
     rules();
