@@ -2,6 +2,7 @@
 
 //gets the sudoku board to solve
 solver::solver() {
+    rules();
     int grid[MAX][MAX] = {{0, 0, 0, 0, 0, 0, 0, 0, 0},
                       {0, 0, 0, 0, 0, 3, 0, 8, 5},
                       {0, 0, 1, 0, 2, 0, 0, 0, 0},
@@ -12,6 +13,15 @@ solver::solver() {
                       {0, 0, 2, 0, 1, 0, 0, 0, 0},
                       {0, 0, 0, 0, 4, 0, 0, 0, 9}};
     solve(grid);
+}
+
+//explains how to use the program
+void rules() {
+    cout << "\n\t====How To Use====\n" << endl;
+    cout << "1. Enter row by row of your sudoku puzzel" << endl;
+    cout << "2. Make sure that each number is entered with a space inbetween (1 2 3 etc)" << endl;
+    cout << "3. For any empty squares on your puzzel enter the number 0" << endl;
+    cout << "\n\t==================\n" << endl;
 }
 
 //checks for empty space, increments the row and col too the empty space
