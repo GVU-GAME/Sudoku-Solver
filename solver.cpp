@@ -1,18 +1,12 @@
 #include "solver.h"
 
 //gets the sudoku board to solve
+void rules();
+void getPuzzel();
+
 solver::solver() {
     rules();
-    int grid[MAX][MAX] = {{0, 0, 0, 0, 0, 0, 0, 0, 0},
-                      {0, 0, 0, 0, 0, 3, 0, 8, 5},
-                      {0, 0, 1, 0, 2, 0, 0, 0, 0},
-                      {0, 0, 0, 5, 0, 7, 0, 0, 0},
-                      {0, 0, 4, 0, 0, 0, 1, 0, 0},
-                      {0, 9, 0, 0, 0, 0, 0, 0, 0},
-                      {5, 0, 0, 0, 0, 0, 0, 7, 3},
-                      {0, 0, 2, 0, 1, 0, 0, 0, 0},
-                      {0, 0, 0, 0, 4, 0, 0, 0, 9}};
-    solve(grid);
+    getPuzzel(); 
 }
 
 //explains how to use the program
@@ -22,6 +16,42 @@ void rules() {
     cout << "2. Make sure that each number is entered with a space inbetween (1 2 3 etc)" << endl;
     cout << "3. For any empty squares on your puzzel enter the number 0" << endl;
     cout << "\n\t==================\n" << endl;
+}
+
+//gets the puzzel from the user
+//starts the solving
+void solver::getPuzzel() {
+    int grid[MAX][MAX];
+    
+    bool complete = false;
+    while(!complete) {
+        cout << "\nPlease enter the puzzel row by row" << endl;
+
+        for(int count = 1; count <= MAX; count++) {
+            int row[MAX];
+            int pos = 0;
+
+            cout << "Enter the numbers of row " << count << endl;
+            cout << "Row: ";
+            while(cin >> row[pos]) {
+                pos++;
+                if(pos == MAX) {
+                    break;
+                }
+            }
+            memcpy(grid[count-1], row, sizeof(row));
+        }
+
+        printGrid(grid);
+
+        char temp;
+        cout << "Is this puzzel correct? Y/N: ";
+        cin >> temp;
+        if(tolower(temp) == 'y') {
+            complete == true;
+        }
+    }
+    solve(grid);
 }
 
 //checks for empty space, increments the row and col too the empty space
