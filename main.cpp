@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstring>
 #include <windows.h>
+#include <string>
 
 #define MAX 9
 #define EMPTY 0
@@ -123,22 +124,27 @@ void getpuzzle() {
         cout << "\nPlease enter the puzzle row by row" << endl;
 
         for(int count = 1; count <= MAX; count++) {
+            string rowInput;
             int row[MAX];
             int pos = 0;
 
             cout << "Enter the numbers of row " << count << endl;
             cout << "Row: ";
-            while(cin >> row[pos]) {
+            cin >> rowInput;
+
+            //convert each char to an int using ascii values
+            while(pos < MAX) {
+                row[pos] = ((int)rowInput.at(pos)) - '0';
                 pos++;
-                if(pos == MAX) {
-                    break;
-                }
             }
+
+            //copy row onto the grid
             memcpy(grid[count-1], row, sizeof(row));
         }
 
         printGrid(grid);
 
+        //repeats process if puzzle is wrong
         char temp;
         cout << "Is this puzzle correct? Y/N: ";
         cin >> temp;
